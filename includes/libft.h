@@ -32,6 +32,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int					ft_min(int x, int y);
 void				ft_perror(char *str, int flags);
 void				ft_errset(char *name);
 void				ft_bzero(void *s, size_t n);

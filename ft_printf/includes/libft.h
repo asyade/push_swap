@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <wchar.h>
 
+
 # define BUFF_SIZE 1024
 
 # define ERR_NOFOUND 1
@@ -32,8 +33,9 @@ typedef struct		s_list
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
-}					t_list;
-
+}
+					t_list;
+int					ft_min(int x, int y);
 void				ft_perror(char *str, int flags);
 void				ft_errset(char *name);
 void				ft_bzero(void *s, size_t n);

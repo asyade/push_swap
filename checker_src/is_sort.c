@@ -8,7 +8,7 @@ void		print_env(t_env *env)
 
 	a = env->sta;
 	b = env->stb;
-	ft_printf("  STACK A       STACK B\n");
+	ft_printf("\e[1;1H\e[2JSTACK A       STACK B\n");
 
 	while (a || b)
 	{
@@ -17,7 +17,7 @@ void		print_env(t_env *env)
 			ft_printf("%+-11d  ", a->val);
 		}
 		else
-			ft_printf("              ");
+			ft_printf("             ");
 		if (b)
 		{
 			ft_printf("%+11d", b->val);
@@ -26,7 +26,7 @@ void		print_env(t_env *env)
 		a = (a) ? a->next : NULL;
 		b = (b) ? b->next : NULL;
 	}
-	usleep(100000);
+	usleep(80000);
 }
 
 int			is_sort(t_env *ev)

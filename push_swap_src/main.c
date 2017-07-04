@@ -24,7 +24,7 @@ static int		check_av(char **av)
 
 int		main(int ac, char **av)
 {
-	t_env	*env;
+	t_ps	*env;
 
 	(void)ac;
 	if (!check_av(av))
@@ -32,7 +32,7 @@ int		main(int ac, char **av)
 		ft_putendl_fd("Erreur", 2);
 		return (1);
 	}
-	env = en_init(av);
+	env = ps_init(av);
 	en_fusion(env);
 	return (EXIT_SUCCESS);
 }

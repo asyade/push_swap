@@ -9,7 +9,23 @@
 #define KBLU  "\x1B[34m"
 #define KNRM  "\x1B[0m"
 
-void				en_fusion(t_env *env);
-void				print_env(t_env *env);
+typedef struct		s_ps
+{
+	t_stack			*sta;
+	t_stack			*stb;
+    t_stat			*ssta;
+	t_stat			*sstb;
+	int				mode;
+	int				count;
+    int             min;
+    int             max;
+}					t_ps;
+
+t_ps				*ps_init(char **lst);
+void				en_fusion(t_ps *env);
+void				print_env(t_ps *env);
+void				ps_swap(int flags, t_ps *env);
+void				ps_rot(int flags, t_ps *env);
+void				ps_push(int flags, t_ps *env);
 
 #endif

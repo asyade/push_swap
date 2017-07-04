@@ -26,19 +26,34 @@ int			main(int ac, char **av)
 {
 	t_env	*ev;
 	char	*line;
+	int		print;
 
+(void)print;
 	ac = 1;
 	line = NULL;
+	print = 0;
+	if (ft_strequ(av[1], "-v"))
+	{
+		print = 1;
+		av++;
+	}
 	if (!check_av(av))
+	{
 		ft_putendl_fd("Erreur", 2);
+		ac = 0;
+	}
 	ev = en_init(av);
-	while (get_next_line(0, &line))
+	while (get_next_line(0, &line) && ac)
 	{
 		if (!exec_str(line, ev))
 		{
 			ft_putendl("KO");
 			ac = 0;
 			break ;
+		}
+		if (print)
+		{
+			print_env(ev);
 		}
 		free(line);
 	}

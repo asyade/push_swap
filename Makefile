@@ -13,7 +13,6 @@ SRC_PUSHSWAP = push_swap_src/en_exec.c \
 	push_swap_src/en_fusion.c \
 	push_swap_src/en_init.c \
 	push_swap_src/main.c \
-	push_swap_src/print.c \
 	push_swap_src/stack.c
 PATH_SRC_PUSHSWAP = push_swap_src
 OBJ_PUSHSWAP = $(patsubst $(PATH_SRC_PUSHSWAP)/%.c, push_swap_obj/%.o, $(SRC_PUSHSWAP))
@@ -64,6 +63,10 @@ checker_obj/%.o : $(PATH_SRC_CHECKER)/%.c $(H_FILES)
 	$(CC) $(FLAGS) -c $< -o $@ -I includes/
 	echo "\033[33mCompiling \033[32m[✔] \033[0m$<"
 
+#
+# Global rules
+#
+
 clean :
 	make -C ft_printf/ clean
 	/bin/rm -rf push_swap_obj checker_obj
@@ -75,8 +78,5 @@ fclean : clean
 	echo "\033[31mRemoving  \033[32m[✔] \033[0m$(NAME)"
 
 re : fclean all
-
-valgrind : all
-	valgrind --leak-check=full ./21sh
 
 .PHONY : valgrind clean fclean re push_swap checker

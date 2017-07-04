@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void		en_swap(int flags, t_env *env)
+void		ps_swap(int flags, t_ps *env)
 {
 	t_stack		*work;
 	int			tmp;
@@ -15,7 +15,7 @@ void		en_swap(int flags, t_env *env)
 	work->next->val = tmp;
 }
 
-void		en_rot(int flags, t_env *env)
+void		ps_rot(int flags, t_ps *env)
 {
 	int		val;
 	t_stack	**work;
@@ -38,7 +38,7 @@ void		en_rot(int flags, t_env *env)
 	}
 }
 
-void		en_push(int flags, t_env *env)
+void		ps_push(int flags, t_ps *env)
 {
 	t_stack		**dst;
 	t_stack		**src;
@@ -51,4 +51,14 @@ void		en_push(int flags, t_env *env)
 		return ;
 	if (src)
 		st_addfront(dst, st_pop(src));
+	if ((flags & I_PUSHA) && *dst)
+	{
+		env->ssta->min = (env->ssta->min < (*dst)->val) ? env->ssta->min : (*dst)->val;
+		env->ssta->max = (env->ssta->max > (*dst)->val) ? env->ssta->max : (*dst)->val;
+	}
+	else if (*dst)
+	{
+		env->sstb->min = (env->sstb->min < (*dst)->val) ? env->sstb->min : (*dst)->val;
+		env->sstb->max = (env->sstb->max > (*dst)->val) ? env->sstb->max : (*dst)->val;
+	}
 }
