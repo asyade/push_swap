@@ -1,5 +1,5 @@
  #ifndef MIXED_H
- # define MIXED_h
+ # define MIXED_H
 
  # include "libft.h"
  # include "ft_printf.h"
