@@ -13,15 +13,11 @@ void		print_env(t_env *env)
 	while (a || b)
 	{
 		if (a)
-		{
 			ft_printf("%+-11d  ", a->val);
-		}
 		else
 			ft_printf("             ");
 		if (b)
-		{
 			ft_printf("%+11d", b->val);
-		}
 		ft_printf("%s", "\n");
 		a = (a) ? a->next : NULL;
 		b = (b) ? b->next : NULL;
